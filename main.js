@@ -72,3 +72,36 @@ console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
 console.log("_________________________________________________");
 console.log("");
+
+// Ejercicio 3: Contar vocales en una cadena
+
+/* En este caso no pide que la función devuelva el resultado, por lo que a los fines 
+didácticos, se mostrará desde el cuerpo de la misma (si bien no es requerimiento).
+Se recorrerá la cadena pasada como parámetro y se incrementará un contador en caso que
+el caracter sea una vocal (se contemplarán los signos ortográficos actuales de la RAE 
+como la tilde y la diéresis en la u.*/
+
+function contarVocales(cadena) {
+    cadenaEnMinuscula = cadena.toLowerCase()
+    let vocales = 0;
+    const textoReferencia = 'aeiouáéíóúü'
+    for (let i = 0; i < cadena.length; ++i) {
+        if (textoReferencia.includes(cadenaEnMinuscula[i])) {
+            vocales += 1;
+        }
+    }
+    console.log('Cadena: \"' + cadena + '\". Cantidad de vocales: ' + vocales);
+}
+
+
+console.log("Solución 3:");
+console.log("");
+
+texto = 'Alelí y pingüino';
+contarVocales(texto);
+
+texto = 'Ctrl';
+contarVocales(texto);
+
+console.log("_________________________________________________");
+console.log("");
