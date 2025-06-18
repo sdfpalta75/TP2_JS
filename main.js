@@ -38,7 +38,6 @@ Se sumará un espacio al final de la cadena para prepararla a los efectos lógic
 Se recorrerá la cadena contando los cambios de caracter distinto de " " a caracter igual a " ". */
 
 function contarPalabras(cadena) {
-    cadena = cadena.trim();
     cadena = cadena + ' ';
     let palabras = 0;
     for (let i = 0; i < cadena.length - 1; i++) {
@@ -97,7 +96,7 @@ function contarVocales(cadena) {
 console.log("Solución 3:");
 console.log("");
 
-texto = 'Alelí y pingüino';
+texto = 'Alelí, Árbol y pingüino';
 contarVocales(texto);
 
 texto = 'Ctrl';
@@ -105,3 +104,45 @@ contarVocales(texto);
 
 console.log("_________________________________________________");
 console.log("");
+
+// Ejercicio 4: Encontrar el palíndromo
+
+/* La función retornará true o false, de aquerdo a lo requerido, recibiendo una cadena.
+En primera instancia se retirarán los signos diacríticos (ya que de lo investigado surge 
+que generalmente en nuestro idioma se consideran palíndromos por la ubicación de las letras
+desconociendo estos signos, como por ej "aérea". Aquí cabe mencionar que se empleó aportes de 
+Gemini en las expresiones de los métodos normalize y replace, habiendo aportado saberes al grupo.
+Luego de esto, se recorrerá la primera mitad de la cadena, comparándola con sus opuestos en espejo, 
+hasta la detección de una diferencia. 
+Acepta frases, quitando el espaciado para sun análisis. */
+
+function buscarPalindromo(cadena) {
+    cadena = cadena.normalize("NFD"); // Normaliza la cadena a su forma descompuesta
+    cadena = cadena.replace(/[\u0300-\u036f\s]/g, ""); // Elimina los signos diacríticos (caracteres combinatorios) y espacios
+    cadena = cadena.toLowerCase(); // Lleva a minúscula para la correcta comparación de caractéres
+
+    let limite = Math.trunc(cadena.length);
+
+    for (let i = 0; i < limite; ++i)  {
+        if (cadena[i] != cadena[cadena.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log("Solución 4:");
+console.log("");
+
+texto = 'Palabra';
+console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+
+texto = 'Aérea';
+console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+
+texto = 'Dábale arroz a la zorra el abad'
+console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+
+console.log("_________________________________________________");
+console.log("");
+
