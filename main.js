@@ -9,25 +9,28 @@ para mostrar por consola su retorno */
 function areaRectangulo(base, altura) {
     return base * altura;
 }
-let base, altura;
 
-console.log("Solución 1:");
-console.log("");
+function ejercicio1() {
+    let base, altura;
 
-base = 2;
-altura = 3;
-console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
+    console.log("Solución 1: Calcular el área de un rectángulo");
+    console.log("");
 
-base = 5;
-altura = 2;
-console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
+    base = 2;
+    altura = 3;
+    console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
 
-base = 7;
-altura = 4;
-console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
+    base = 5;
+    altura = 2;
+    console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
 
-console.log("_________________________________________________");
-console.log("");
+    base = 7;
+    altura = 4;
+    console.log("Área del rectángulo de " + base + " por " + altura + ": " + areaRectangulo(base, altura));
+
+    console.log("_________________________________________________");
+    console.log("");
+}
 
 // Ejercicio 2: Contar palabras en una cadena
 
@@ -48,29 +51,31 @@ function contarPalabras(cadena) {
     return palabras;
 }
 
-console.log("Solución 2:");
-console.log("");
+function ejercicio2() {
+    console.log("Solución 2: Contar palabras en una cadena");
+    console.log("");
 
-let texto = 'Hola Mundo';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    let texto = 'Hola Mundo';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-texto = 'Hola      Mundo';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    texto = 'Hola      Mundo';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-texto = ' Hola Mundo ';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    texto = ' Hola Mundo ';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-texto = 'A B C';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    texto = 'A B C';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-texto = 'A';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    texto = 'A';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-texto = '  ';
-console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
+    texto = '  ';
+    console.log('Cadena: \"' + texto + '\". Palabras: ' + contarPalabras(texto));
 
-console.log("_________________________________________________");
-console.log("");
+    console.log("_________________________________________________");
+    console.log("");
+}
 
 // Ejercicio 3: Contar vocales en una cadena
 
@@ -92,18 +97,19 @@ function contarVocales(cadena) {
     console.log('Cadena: \"' + cadena + '\". Cantidad de vocales: ' + vocales);
 }
 
+function ejercicio3() {
+    console.log("Solución 3: Contar vocales en una cadena");
+    console.log("");
 
-console.log("Solución 3:");
-console.log("");
+    let texto = 'Alelí, Árbol y pingüino';
+    contarVocales(texto);
 
-texto = 'Alelí, Árbol y pingüino';
-contarVocales(texto);
+    texto = 'Ctrl';
+    contarVocales(texto);
 
-texto = 'Ctrl';
-contarVocales(texto);
-
-console.log("_________________________________________________");
-console.log("");
+    console.log("_________________________________________________");
+    console.log("");
+}
 
 // Ejercicio 4: Encontrar el palíndromo
 
@@ -131,18 +137,98 @@ function buscarPalindromo(cadena) {
     return true;
 }
 
-console.log("Solución 4:");
-console.log("");
+function ejercicio4() {
+    console.log("Solución 4: Encontrar el palíndromo");
+    console.log("");
 
-texto = 'Palabra';
-console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+    let texto = 'Palabra';
+    console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
 
-texto = 'Aérea';
-console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+    texto = 'Aérea';
+    console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
 
-texto = 'Dábale arroz a la zorra el abad'
-console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+    texto = 'erre'
+    console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
 
-console.log("_________________________________________________");
-console.log("");
+    texto = 'Dábale arroz a la zorra el abad'
+    console.log('Cadena: \"' + texto + '\" --- Palíndromo: ' + buscarPalindromo(texto));
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+// Ejercicio 5: Convertir la edad de un perro a años humanos
+
+/* Tomando el valor ingresado por el usuario, se multiplicará por 7 y se mostrará por consola, 
+en caso de ser positivo. Si es 0 o negativo, se informará que el numero no es adecuado */
+
+function convertirEdadPerroAHumano(edadPerro) {
+    edadPerro = parseFloat(edadPerro);
+    if (edadPerro > 0) {
+        console.log('Tu perro tiene ' + edadPerro*7 + ' años humanos.');
+    } else {
+        console.log('El dato ingresado no es una edad válida.');
+    }
+}
+
+function ejercicio5() {
+    console.log("Solución 5: Convertir edad de perro a años humanos");
+    console.log("");
+
+    let edadIngresada = prompt("Por favor, ingresa la edad de tu perro: ");
+    convertirEdadPerroAHumano(edadIngresada);
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+function ejercicio6() {
+    console.log("Solución 6: Primera letra de cada palabra a mayúscula");
+    console.log("");
+
+    console.log("Ejercicio 6 en construcción");
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+function ejercicio7() {
+    console.log("Solución 7: Sucesión de Fibonacci");
+    console.log("");
+
+    console.log("Ejercicio 7 en construcción");
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+function ejercicio8() {
+    console.log("Solución 8: Lista de productos");
+    console.log("");
+
+    console.log("Ejercicio 8 en construcción");
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+function ejercicio9() {
+    console.log("Solución 9: Estudiantes y Calificaciones");
+    console.log("");
+
+    console.log("Ejercicio 9 en construcción");
+
+    console.log("_________________________________________________");
+    console.log("");
+}
+
+function ejercicio10() {
+    console.log("Solución 10: Películas");
+    console.log("");
+
+    console.log("Ejercicio 10 en construcción");
+
+    console.log("_________________________________________________");
+    console.log("");
+}
 
