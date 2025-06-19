@@ -44,7 +44,7 @@ function contarPalabras(cadena) {
     cadena = cadena + ' ';
     let palabras = 0;
     for (let i = 0; i < cadena.length - 1; i++) {
-        if (cadena[i] != ' ' && cadena[i + 1] == ' ') {
+        if (cadena[i] !== ' ' && cadena[i + 1] === ' ') {
             palabras += 1;
         }
     }
@@ -130,7 +130,7 @@ function buscarPalindromo(cadena) {
     let limite = Math.trunc(cadena.length);
 
     for (let i = 0; i < limite; ++i)  {
-        if (cadena[i] != cadena[cadena.length - 1 - i]) {
+        if (cadena[i] !== cadena[cadena.length - 1 - i]) {
             return false;
         }
     }
@@ -193,7 +193,7 @@ método join, se unirá nuevamente la cadena */
 function capitalizarPalabras(cadena) {
     const palabras = cadena.split(' ');
     const palabrasCapitalizadas = palabras.map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase());
-    console.log('Frase capitalizada: ' + palabrasCapitalizadas.join(' '));
+    return palabrasCapitalizadas.join(' ');
 }
 
 function ejercicio6() {
@@ -202,7 +202,7 @@ function ejercicio6() {
 
     let texto = prompt("Por favor, ingresa una frase: ");
     if (texto !== null && texto.trim() !== "") {
-        capitalizarPalabras(texto);
+        console.log('Frase capitalizada: ' + capitalizarPalabras(texto));
     } else {
         console.log('No se ingresó una frase.');
     }
@@ -211,37 +211,136 @@ function ejercicio6() {
     console.log("");
 }
 
+// Ejercicio Nro. 7: Mostrar n elementos de la serie de Fibonacci
+
+/* La función recibe un número entero positivo, de lo contrario se informa tal situación.
+Se emplea el operador ternario para conformar el primer (o los 2 primeros) elementos de
+la serie, ya que estos son los únicos independientes.
+De corresponder, se completa el array agregando los elementos faltantes, los cuales
+son dependientes de los anteriores, ya que desde el tercer elemento, estos se conforman
+sumando los 2 elementos precedentes. */
+
+function serieFibonacci(elementos) {
+    let serie = (elementos === 1) ? [0] : [0, 1];
+    if (elementos > 2) {
+        for (let i = 2; i < elementos; ++i) {
+            serie.push(serie[i-2] + serie[i-1]);
+        }
+    }
+    return serie;
+}
+
 function ejercicio7() {
     console.log("Solución 7: Sucesión de Fibonacci");
     console.log("");
 
-    console.log("Ejercicio 7 en construcción");
+    let elementos = prompt('Por favor, ingrese la cantidad de elementos de la serie: ');
+    if (parseFloat(parseInt(elementos)) === parseFloat(elementos) && parseInt(elementos) > 0) {
+        console.log('Los primeros ' + elementos + ' elementos de la serie de Fibonacci son: ');
+        console.log(serieFibonacci(parseInt(elementos)));
+    } else {
+        console.log('Debe ingresar un entero positivo');
+    }
 
     console.log("_________________________________________________");
     console.log("");
 }
 
+// Lista de productos
+
+/* Se creará el array en la función raíz del ejercicio y se pasará como argumento
+a las funciones que ponen en práctica los métodos solicitados. 
+Desde cada función se mostrará por consola el resultado requerido. */
+
+// 1. Usando forEach: Mostrar en consola cada producto con su nombre y precio
+function mostrarNombrePrecio(lista) {
+    console.log('Punto 1 - Nombre y Precio de los productos con forEach');
+    lista.forEach(function(producto) {
+        console.log('Producto: ' + producto.nombre + ' --- Precio: ' + producto.precio);
+    });
+    console.log("_________________________________________________");
+}
+
+// 2. Usando map: Crear un array con solo los nombres de los productos
+function crearArrayNombresProductos(lista) {
+    console.log('Punto 2 - Crear array solo con nombre de producto con map');
+    let arrayNombresProductos = lista.map(function(producto) {
+        return producto.nombre;
+    });
+    console.log(arrayNombresProductos);
+    console.log("_________________________________________________");
+}
+// 3. Usando filter: Obtener productos electrónicos con stock mayor a 20
+// 4. Usando find: Encontrar el producto con id 3
+// 5. Usando reduce: Calcular el valor total del inventario (precio * stock)
+
 function ejercicio8() {
+    const productos = [
+        { id: 1, nombre: 'Laptop', precio: 1200, stock: 15, categoria: 'electrónica' },
+        { id: 2, nombre: 'Mouse', precio: 25, stock: 50, categoria: 'electrónica' },
+        { id: 3, nombre: 'Teclado', precio: 45, stock: 30, categoria: 'electrónica' },
+        { id: 4, nombre: 'Monitor', precio: 300, stock: 20, categoria: 'electrónica' },
+        { id: 5, nombre: 'Libro', precio: 15, stock: 100, categoria: 'libros' }
+    ];
     console.log("Solución 8: Lista de productos");
     console.log("");
 
+    mostrarNombrePrecio(productos);
+    crearArrayNombresProductos(productos);
     console.log("Ejercicio 8 en construcción");
 
     console.log("_________________________________________________");
     console.log("");
 }
 
+// Estudiantes y Calificaciones
+
+/* Se creará el array en la función raíz del ejercicio y se pasará como argumento
+a las funciones que ponen en práctica los métodos solicitados. 
+Desde cada función se mostrará por consola el resultado requerido. */
+
+// 1. Usando forEach: Mostrar nombre y edad de cada estudiante
+// 2. Usando map: Crear array de objetos con nombre y promedio de calificaciones
+// 3. Usando filter: Obtener estudiantes con promedio mayor a 7.5
+// 4. Usando find: Encontrar estudiante llamado 'María'
+// 5. Usando reduce: Calcular la edad promedio de los estudiantes
+
 function ejercicio9() {
+    const estudiantes = [
+        { id: 1, nombre: 'Ana', edad: 20, calificaciones: [8, 9, 7, 8] },
+        { id: 2, nombre: 'Carlos', edad: 22, calificaciones: [6, 7, 8, 7] },
+        { id: 3, nombre: 'María', edad: 21, calificaciones: [9, 9, 8, 10] },
+        { id: 4, nombre: 'Juan', edad: 19, calificaciones: [7, 6, 5, 8] }
+    ];
+
     console.log("Solución 9: Estudiantes y Calificaciones");
     console.log("");
 
     console.log("Ejercicio 9 en construcción");
-
     console.log("_________________________________________________");
     console.log("");
 }
 
+// Películas
+
+/* Se creará el array en la función raíz del ejercicio y se pasará como argumento
+a las funciones que ponen en práctica los métodos solicitados. 
+Desde cada función se mostrará por consola el resultado requerido. */
+
+// 1. Usando forEach: Mostrar título y año de cada película
+// 2. Usando map: Crear array de títulos en mayúsculas
+// 3. Usando filter: Obtener películas de drama con rating mayor a 8.5
+// 4. Usando find: Encontrar película estrenada en 2014
+// 5. Usando reduce: Calcular la duración total de todas las películas
+
 function ejercicio10() {
+    const peliculas = [
+        { id: 1, titulo: 'El Padrino', año: 1972, duracion: 175, genero: 'drama', rating: 9.2 },
+        { id: 2, titulo: 'Pulp Fiction', año: 1994, duracion: 154, genero: 'crimen', rating: 8.9 },
+        { id: 3, titulo: 'El Señor de los Anillos', año: 2001, duracion: 178, genero: 'fantasía', rating: 8.8 },
+        { id: 4, titulo: 'Interestelar', año: 2014, duracion: 169, genero: 'ciencia ficción', rating: 8.6 },
+        { id: 5, titulo: 'Parásitos', año: 2019, duracion: 132, genero: 'drama', rating: 8.6 }
+    ];
     console.log("Solución 10: Películas");
     console.log("");
 
