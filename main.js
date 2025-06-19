@@ -182,11 +182,30 @@ function ejercicio5() {
     console.log("");
 }
 
+// Ejercicio 6: Primera letra de cada palabra a mayúscula
+
+/* Tomando el valor ingresado por el usuario mediante un prompt, se separarán las 
+palabras con el método split, teniendo en cuenta el espaciado. Luego se efectuará un mapeo 
+tomando la primer letra de cada una y se convertirá a mayúscula, haciendo lo opuesto
+con el resto de la palabra y se unirá primera letra y resto. Por último, mendiante el 
+método join, se unirá nuevamente la cadena */
+
+function capitalizarPalabras(cadena) {
+    const palabras = cadena.split(' ');
+    const palabrasCapitalizadas = palabras.map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase());
+    console.log('Frase capitalizada: ' + palabrasCapitalizadas.join(' '));
+}
+
 function ejercicio6() {
     console.log("Solución 6: Primera letra de cada palabra a mayúscula");
     console.log("");
 
-    console.log("Ejercicio 6 en construcción");
+    let texto = prompt("Por favor, ingresa una frase: ");
+    if (texto !== null && texto.trim() !== "") {
+        capitalizarPalabras(texto);
+    } else {
+        console.log('No se ingresó una frase.');
+    }
 
     console.log("_________________________________________________");
     console.log("");
