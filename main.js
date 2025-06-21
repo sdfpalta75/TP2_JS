@@ -260,7 +260,6 @@ function mostrarNombrePrecio(lista) {
     });
     console.log("_________________________________________________");
 }
-
 // 2. Usando map: Crear un array con solo los nombres de los productos
 function crearArrayNombresProductos(lista) {
     console.log('Punto 2 - Crear array solo con nombre de producto con map');
@@ -271,8 +270,31 @@ function crearArrayNombresProductos(lista) {
     console.log("_________________________________________________");
 }
 // 3. Usando filter: Obtener productos electrónicos con stock mayor a 20
+function productosPorSotck(lista) {
+    console.log('Punto 3 - Productos electrónicos con stock mayor a 20');
+    let arrayElectronicosStockAlto = lista.filter(function(producto) {
+       return producto.stock > 20 && producto.categoria === 'electrónica';
+    });
+    console.log(arrayElectronicosStockAlto);
+    console.log("_________________________________________________");
+}
 // 4. Usando find: Encontrar el producto con id 3
+function buscarProductoPorId (lista) {
+    console.log('Punto 4 - Encontrar el producto con id 3');
+    let arrayProductoPorId = lista.find(function(producto) {
+        return producto.id === 3;
+    });
+    console.log(arrayProductoPorId);
+    console.log("_________________________________________________");
+}
 // 5. Usando reduce: Calcular el valor total del inventario (precio * stock)
+function calcularValorTotalStock (lista) {
+    console.log('Punto 5 - Calcular el valor total del inventario');
+    let valorTotal = lista.reduce((acumulador, producto) => {
+        return acumulador + (producto.precio * producto.stock);
+    }, 0);
+    console.log('El inventario tiene un valor total de: ' + valorTotal);
+}
 
 function ejercicio8() {
     const productos = [
@@ -287,7 +309,9 @@ function ejercicio8() {
 
     mostrarNombrePrecio(productos);
     crearArrayNombresProductos(productos);
-    console.log("Ejercicio 8 en construcción");
+    productosPorSotck(productos);
+    buscarProductoPorId(productos);
+    calcularValorTotalStock(productos);
 
     console.log("_________________________________________________");
     console.log("");
