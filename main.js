@@ -397,11 +397,11 @@ function calcularDuracionTotal (lista) {
 
 function ejercicio10() {
     const peliculas = [
-        { id: 1, titulo: 'Barbie y las 12 Princesas Bailarinas', año: 2006, duracion: 82, genero: 'animación', rating: 6.8 },
-        { id: 2, titulo: '¡Qué bello es vivir!', año: 1946, duracion: 130, genero: 'drama', rating: 8.6 },
-        { id: 3, titulo: '12 Horas para Sobrevivir', año: 2014, duracion: 103, genero: 'acción', rating: 6.4 },
-        { id: 4, titulo: 'El Diablo Viste a la Moda', año: 2006, duracion: 109, genero: 'comedia dramática', rating: 6.9 },
-        { id: 5, titulo: 'Batman Regresa', año: 1992, duracion: 126, genero: 'acción', rating: 7.1 }
+        { id: 1, titulo: 'El Padrino', año: 1972, duracion: 175, genero: 'drama', rating: 9.2 },
+        { id: 2, titulo: 'Pulp Fiction', año: 1994, duracion: 154, genero: 'crimen', rating: 8.9 },
+        { id: 3, titulo: 'El Señor de los Anillos', año: 2001, duracion: 178, genero: 'fantasía', rating: 8.8 },
+        { id: 4, titulo: 'Interestelar', año: 2014, duracion: 169, genero: 'ciencia ficción', rating: 8.6 },
+        { id: 5, titulo: 'Parásitos', año: 2019, duracion: 132, genero: 'drama', rating: 8.6 }
     ];
     console.log("Solución 10: Películas");
     console.log("");
