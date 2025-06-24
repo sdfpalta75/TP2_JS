@@ -222,10 +222,8 @@ sumando los 2 elementos precedentes. */
 
 function serieFibonacci(elementos) {
     let serie = (elementos === 1) ? [0] : [0, 1];
-    if (elementos > 2) {
-        for (let i = 2; i < elementos; ++i) {
-            serie.push(serie[i-2] + serie[i-1]);
-        }
+    for (let i = 2; i < elementos; ++i) {
+        serie.push(serie[i-2] + serie[i-1]);
     }
     return serie;
 }
@@ -236,7 +234,10 @@ function ejercicio7() {
 
     let elementos = prompt('Por favor, ingrese la cantidad de elementos de la serie: ');
     if (parseFloat(parseInt(elementos)) === parseFloat(elementos) && parseInt(elementos) > 0) {
-        console.log('Los primeros ' + elementos + ' elementos de la serie de Fibonacci son: ');
+        let imprimrSalida = (parseInt(elementos) === 1)
+        ? 'El primer elemento de la serie de Fibonacci es: '
+        : 'Los primeros ' + elementos + ' elementos de la serie de Fibonacci son: ';
+        console.log(imprimrSalida);
         console.log(serieFibonacci(parseInt(elementos)));
     } else {
         console.log('Debe ingresar un entero positivo');
@@ -321,13 +322,65 @@ function ejercicio8() {
 
 /* Se creará el array en la función raíz del ejercicio y se pasará como argumento
 a las funciones que ponen en práctica los métodos solicitados. 
-Desde cada función se mostrará por consola el resultado requerido. */
+Desde cada función se mostrará por consola el resultado requerido.
+En el particular del punto 5, la edad promedio se redondeó a entero ya que habitualmente,
+cuando hablamos de edad, nos expresamos de esta manera. */
 
 // 1. Usando forEach: Mostrar nombre y edad de cada estudiante
+function mostrarNombreYEdad(lista) {
+    console.log('Punto 1 - Mostrar nombre y edad de cada estudiante con forEach');
+    lista.forEach(function(estudiante) {
+        console.log('Nombre: ' + estudiante.nombre + ' --- Edad: ' + estudiante.edad + ' años.');
+    });
+    console.log("_________________________________________________");
+}
 // 2. Usando map: Crear array de objetos con nombre y promedio de calificaciones
+function crearArrayNombresYPromedios(lista) {
+    console.log('Punto 2 - Crear array de nombres y promedios con map');
+    let arrayNombresYPromedios = lista.map(function(estudiante) {
+        let promedio = estudiante.calificaciones.reduce((acumulador, nota) => {
+            return acumulador + nota;
+        }, 0)/estudiante.calificaciones.length;
+        return [estudiante.nombre, promedio];
+    });
+    console.log(arrayNombresYPromedios);
+    console.log("_________________________________________________");
+}
+
 // 3. Usando filter: Obtener estudiantes con promedio mayor a 7.5
+function buscarPromediosAltos(lista) {
+    console.log('Punto 3 - Estudiantes con pormedio mayor a 7.5');
+    let arrayConPromedios = lista.map(function(estudiante) {
+        let promedio = estudiante.calificaciones.reduce((acumulador, nota) => {
+            return acumulador + nota;
+        }, 0)/estudiante.calificaciones.length;
+        return {id:estudiante.id, nombre:estudiante.nombre, edad:estudiante.edad, promedio:promedio};
+    });
+    let arrayPromediosAltos = arrayConPromedios.filter(function(estudiante) {
+       return estudiante.promedio > 7.5;
+    });
+    console.log(arrayPromediosAltos);
+    console.log("_________________________________________________");
+}
+
 // 4. Usando find: Encontrar estudiante llamado 'María'
+function buscarEstudiante (lista) {
+    console.log('Punto 4 - Encontrar estudiante llamado \'María\'');
+    let arrayEstudiantePorNombre = lista.find(function(estudiante) {
+        return estudiante.nombre === 'María';
+    });
+    console.log(arrayEstudiantePorNombre);
+    console.log("_________________________________________________");
+}
+
 // 5. Usando reduce: Calcular la edad promedio de los estudiantes
+function calcularEdadPromedio(lista) {
+    console.log('Punto 5 - Calcular edad promedio de los estudiantes');
+    let edadPromedio = Math.round(lista.reduce((acumulador, estudiante) => {
+        return acumulador + estudiante.edad;
+    }, 0)/lista.length);
+    console.log('La edad promedio de los estudiantes es ' + edadPromedio + ' años.');
+} 
 
 function ejercicio9() {
     const estudiantes = [
@@ -340,7 +393,12 @@ function ejercicio9() {
     console.log("Solución 9: Estudiantes y Calificaciones");
     console.log("");
 
-    console.log("Ejercicio 9 en construcción");
+    mostrarNombreYEdad(estudiantes);
+    crearArrayNombresYPromedios(estudiantes);
+    buscarPromediosAltos(estudiantes);
+    buscarEstudiante(estudiantes);
+    calcularEdadPromedio(estudiantes);
+
     console.log("_________________________________________________");
     console.log("");
 }
